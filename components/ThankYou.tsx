@@ -1,4 +1,5 @@
 import React from 'react';
+import { content } from '../content';
 
 const ThankYou: React.FC = () => {
   return (
@@ -10,17 +11,16 @@ const ThankYou: React.FC = () => {
           </svg>
         </div>
         
-        <h1 className="text-3xl font-bold mb-4 text-slate-900">Solicitação Enviada!</h1>
-        <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-          Recebemos seu interesse no Novo Hyundai KONA.<br/>
-          Um de nossos consultores entrará em contato via WhatsApp em breve para confirmar seu agendamento.
+        <h1 className="text-3xl font-bold mb-4 text-slate-900">{content.thankYou.title}</h1>
+        <p className="text-lg text-slate-600 mb-8 leading-relaxed whitespace-pre-line">
+          {content.thankYou.message}
         </p>
         
         <a 
           href="/"
           className="inline-block w-full sm:w-auto bg-brand-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-brand-700 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-brand-500/50"
         >
-          Voltar ao início
+          {content.thankYou.button}
         </a>
       </div>
     </div>

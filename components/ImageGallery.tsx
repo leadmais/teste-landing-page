@@ -1,13 +1,7 @@
 import React, { useState, useRef } from 'react';
+import { content } from '../content';
 
-// Updated images to look like modern cars/SUVs
-const IMAGES = [
-  "1.jpg",
-  "2.jpg",
-  "3.jpg",
-  "4.jpg",
-  "5.jpg"
-];
+const IMAGES = content.gallery;
 
 const ImageGallery: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -92,7 +86,7 @@ const ImageGallery: React.FC = () => {
           <div key={index} className="w-full h-full flex-shrink-0 relative select-none">
             <img
               src={url}
-              alt={`Hyundai KONA imagem ${index + 1}`}
+              alt={`Galeria imagem ${index + 1}`}
               className="w-full h-full object-cover pointer-events-none" // pointer-events-none ensures the div captures the events, not the img
               onDragStart={handleDragStart}
               loading={index === 0 ? "eager" : "lazy"}

@@ -2,11 +2,19 @@ import React, { useState, useEffect } from 'react';
 import ContactForm from './components/ContactForm';
 import ThankYou from './components/ThankYou';
 import ImageGallery from './components/ImageGallery';
+import { content } from './content';
 
 const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   useEffect(() => {
+    // Sync document title and description with content.ts
+    document.title = content.seo.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', content.seo.description);
+    }
+
     const handlePopState = () => {
       setCurrentPath(window.location.pathname);
     };
@@ -26,16 +34,16 @@ const App: React.FC = () => {
       <header className="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            {/* <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+            <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
               H
-            </div> */}
-            <span className="font-bold text-lg tracking-tight text-slate-800">Hyundai Terra Santa</span>
+            </div>
+            <span className="font-bold text-lg tracking-tight text-slate-800">{content.header.brandName}</span>
           </div>
 
           {/* Social Icons */}
           <div className="flex items-center gap-4">
             <a 
-              href="https://wa.me/" 
+              href={content.header.whatsappUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-slate-400 hover:text-green-500 transition-colors duration-200"
@@ -46,7 +54,7 @@ const App: React.FC = () => {
               </svg>
             </a>
             <a 
-              href="https://instagram.com/" 
+              href={content.header.instagramUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-slate-400 hover:text-pink-600 transition-colors duration-200"
@@ -68,13 +76,13 @@ const App: React.FC = () => {
             {/* Left Column: Content */}
             <div className="order-1 lg:order-1 space-y-6 max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 text-brand-600 text-sm font-semibold mb-2">
-                ⚡ Lançamento Hyundai
+                {content.hero.badge}
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
-                Novo Hyundai <span className="text-brand-600">KONA Híbrido</span>
+                {content.hero.title.prefix} <span className="text-brand-600">{content.hero.title.highlight}</span>
               </h1>
               <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                O SUV que redefine o futuro. Design futurista, máxima eficiência energética e tecnologia de ponta para você ir mais longe.
+                {content.hero.description}
               </p>
               
               <div className="pt-4 hidden lg:block">
@@ -85,7 +93,7 @@ const App: React.FC = () => {
                     <img className="w-8 h-8 rounded-full border-2 border-white" src="https://picsum.photos/32/32?random=2" alt="" loading="lazy" />
                     <img className="w-8 h-8 rounded-full border-2 border-white" src="https://picsum.photos/32/32?random=3" alt="" loading="lazy" />
                   </div>
-                  <p>+120 Ofertas enviadas esta semana</p>
+                  <p>{content.hero.socialProof}</p>
                 </div>
               </div>
             </div>
@@ -111,12 +119,12 @@ const App: React.FC = () => {
       <footer className="bg-slate-50 border-t border-slate-200 py-8">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-slate-500 text-sm">
-            &copy; {new Date().getFullYear()} Hyundai Auto Concessionária. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} {content.footer.copyright}
           </p>
           <div className="mt-2 flex justify-center gap-4 text-xs text-slate-400">
-            <a href="#" className="hover:text-brand-600 transition-colors">Termos de Uso</a>
+            <a href="#" className="hover:text-brand-600 transition-colors">{content.footer.links.terms}</a>
             <span>•</span>
-            <a href="#" className="hover:text-brand-600 transition-colors">Política de Privacidade</a>
+            <a href="#" className="hover:text-brand-600 transition-colors">{content.footer.links.privacy}</a>
           </div>
         </div>
       </footer>
