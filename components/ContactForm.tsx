@@ -13,7 +13,7 @@ const ContactForm: React.FC = () => {
 
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isFormValid, setIsFormValid] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
 
   // Real-time validation
@@ -25,11 +25,12 @@ const ContactForm: React.FC = () => {
 
     setIsFormValid(isNameValid && isEmailValid && isPhoneValid && isConsentValid);
 
-    // Update error messages only if field was touched to avoid premature shouting
+    // Update error messages only if field was touched
     const newErrors: FormErrors = {};
     if (touched.name && !isNameValid) newErrors.name = "Por favor, digite um nome válido.";
     if (touched.email && !isEmailValid) newErrors.email = "Digite um e-mail válido.";
     if (touched.phone && !isPhoneValid) newErrors.phone = "Telefone inválido (mínimo 10 dígitos).";
+    if (touched.consent && !isConsentValid) newErrors.consent = "Você precisa concordar para continuar.";
     
     setErrors(newErrors);
   }, [formData, touched]);
@@ -57,32 +58,46 @@ const ContactForm: React.FC = () => {
     setTouched(prev => ({ ...prev, [name]: true }));
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (isFormValid) {
-      // Simulate API call
-      setIsSubmitted(true);
+      setIsSubmitting(true);
+
+      try {
+        // Envio para o Webhook do Zapier
+        // Usamos mode: 'no-cors' para garantir que o request saia do navegador sem erros de CORS
+        // Note que isso torna a resposta 'opaque', mas garante o envio dos dados.
+        await fetch('https://hooks.zapier.com/hooks/catch/921122/ufq6nw8/', {
+          method: 'POST',
+          body: JSON.stringify({
+            ...formData,
+            submittedAt: new Date().toISOString()
+          }),
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+
+        // Redireciona para a página de obrigado
+        window.location.href = '/obrigado';
+        
+      } catch (error) {
+        console.error('Erro ao enviar formulário:', error);
+        alert('Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente.');
+        setIsSubmitting(false);
+      }
+    } else {
+      // Mark all fields as touched to show errors
+      setTouched({
+        name: true,
+        email: true,
+        phone: true,
+        consent: true
+      });
     }
   };
-
-  if (isSubmitted) {
-    return (
-      <div 
-        className="bg-green-50 border border-green-200 rounded-lg p-8 text-center animate-fade-in"
-        role="alert"
-      >
-        <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
-          <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h3 className="text-xl font-bold text-green-900 mb-2">Cadastro realizado!</h3>
-        <p className="text-green-800">
-          Obrigado, {formData.name.split(' ')[0]}. Entraremos em contato em breve.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <form 
@@ -104,6 +119,7 @@ const ContactForm: React.FC = () => {
         placeholder="Seu nome"
         autoComplete="name"
         required
+        disabled={isSubmitting}
       />
 
       <Input
@@ -119,6 +135,7 @@ const ContactForm: React.FC = () => {
         placeholder="seu@email.com"
         autoComplete="email"
         required
+        disabled={isSubmitting}
       />
 
       <Input
@@ -135,18 +152,21 @@ const ContactForm: React.FC = () => {
         autoComplete="tel"
         maxLength={15}
         required
+        disabled={isSubmitting}
       />
 
       <div className="mt-6 mb-6">
         <label className="flex items-start cursor-pointer group">
-          <div className="relative flex items-center">
+          <div className="relative flex items-center mt-0.5">
             <input
               type="checkbox"
               name="consent"
               id="consent"
               checked={formData.consent}
               onChange={handleChange}
-              className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-slate-300 shadow-sm transition-all checked:border-brand-600 checked:bg-brand-600 focus:ring-2 focus:ring-brand-500 focus:ring-offset-1"
+              onBlur={handleBlur}
+              disabled={isSubmitting}
+              className={`peer h-5 w-5 cursor-pointer appearance-none rounded border shadow-sm transition-all focus:ring-2 focus:ring-brand-500 focus:ring-offset-1 ${errors.consent ? 'border-red-500' : 'border-slate-300 checked:border-brand-600 checked:bg-brand-600'}`}
             />
             <svg
               className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 text-white w-3.5 h-3.5"
@@ -156,24 +176,39 @@ const ContactForm: React.FC = () => {
               <path d="M3 8L6 11L11 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <span className="ml-3 text-sm text-slate-600 group-hover:text-slate-900 transition-colors">
+          <span className={`ml-3 text-sm transition-colors ${errors.consent ? 'text-red-600' : 'text-slate-600 group-hover:text-slate-900'}`}>
             Concordo em receber comunicações e ofertas exclusivas.
           </span>
         </label>
+        {errors.consent && (
+           <p className="mt-1 text-sm text-red-600 pl-8" role="alert">
+             {errors.consent}
+           </p>
+        )}
       </div>
 
       <button
         type="submit"
-        disabled={!isFormValid}
+        disabled={isSubmitting}
         className={`
-          w-full py-4 px-6 rounded-lg font-bold text-lg shadow-sm transition-all duration-200
-          focus:outline-none focus:ring-4 focus:ring-brand-500/50
-          ${isFormValid 
-            ? 'bg-brand-600 text-white hover:bg-brand-700 hover:shadow-md transform hover:-translate-y-0.5' 
-            : 'bg-slate-200 text-slate-400 cursor-not-allowed'}
+          w-full py-4 px-6 rounded-lg font-bold text-lg shadow-sm transition-all duration-200 
+          focus:outline-none focus:ring-4 focus:ring-brand-500/50 
+          ${isSubmitting 
+            ? 'bg-brand-400 cursor-not-allowed opacity-80' 
+            : 'bg-brand-600 text-white hover:bg-brand-700 hover:shadow-md transform hover:-translate-y-0.5'}
         `}
       >
-        Quero Acessar Agora
+        {isSubmitting ? (
+          <span className="flex items-center justify-center gap-2">
+            <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Enviando...
+          </span>
+        ) : (
+          "Quero Acessar Agora"
+        )}
       </button>
       
       <p className="mt-4 text-xs text-center text-slate-400">

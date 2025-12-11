@@ -11,6 +11,7 @@ export interface FormErrors {
   name?: string;
   email?: string;
   phone?: string;
+  consent?: string;
 }
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
