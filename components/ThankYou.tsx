@@ -10,10 +10,10 @@ const ThankYou: React.FC = () => {
           </svg>
         </div>
         
-        <h1 className="text-3xl font-bold mb-4 text-slate-900">Obrigado!</h1>
+        <h1 className="text-3xl font-bold mb-4 text-slate-900">Solicitação Enviada!</h1>
         <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-          Recebemos seus dados com sucesso.<br/>
-          Em breve nossa equipe entrará em contato com você para dar o próximo passo.
+          Recebemos seu interesse no Novo Hyundai KONA.<br/>
+          Um de nossos consultores entrará em contato via WhatsApp em breve para confirmar seu agendamento.
         </p>
         
         <a 

@@ -67,7 +67,6 @@ const ContactForm: React.FC = () => {
       try {
         // Envio para o Webhook do Zapier
         // Usamos mode: 'no-cors' para garantir que o request saia do navegador sem erros de CORS
-        // Note que isso torna a resposta 'opaque', mas garante o envio dos dados.
         await fetch('https://hooks.zapier.com/hooks/catch/921122/ufq6nw8/', {
           method: 'POST',
           body: JSON.stringify({
@@ -105,7 +104,7 @@ const ContactForm: React.FC = () => {
       className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-slate-100"
       noValidate
     >
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">Garanta sua vaga</h2>
+      <h2 className="text-2xl font-bold text-slate-900 mb-6">Receba a melhor oferta</h2>
       
       <Input
         id="name"
@@ -125,7 +124,7 @@ const ContactForm: React.FC = () => {
       <Input
         id="email"
         name="email"
-        label="E-mail profissional"
+        label="E-mail"
         type="email"
         inputMode="email"
         value={formData.email}
@@ -177,7 +176,7 @@ const ContactForm: React.FC = () => {
             </svg>
           </div>
           <span className={`ml-3 text-sm transition-colors ${errors.consent ? 'text-red-600' : 'text-slate-600 group-hover:text-slate-900'}`}>
-            Concordo em receber comunicações e ofertas exclusivas.
+            Concordo em receber  contato para a melhor oferta.
           </span>
         </label>
         {errors.consent && (
@@ -207,12 +206,12 @@ const ContactForm: React.FC = () => {
             Enviando...
           </span>
         ) : (
-          "Quero Acessar Agora"
+          "Receber oferta"
         )}
       </button>
       
       <p className="mt-4 text-xs text-center text-slate-400">
-        Seus dados estão seguros. Não enviamos spam.
+        Seus dados estão protegidos.
       </p>
     </form>
   );

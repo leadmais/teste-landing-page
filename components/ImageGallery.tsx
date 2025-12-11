@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
 
+// Updated images to look like modern cars/SUVs
 const IMAGES = [
-  "https://picsum.photos/800/600?random=10",
-  "https://picsum.photos/800/600?random=11",
-  "https://picsum.photos/800/600?random=12",
-  "https://picsum.photos/800/600?random=13",
-  "https://picsum.photos/800/600?random=14"
+  "/public/1.jpg",
+  "/public/2.jpg",
+  "/public/3.jpg",
+  "/public/4.jpg",
+  "/public/5.jpg"
 ];
 
 const ImageGallery: React.FC = () => {
@@ -69,7 +70,7 @@ const ImageGallery: React.FC = () => {
 
   return (
     <div 
-      className="relative w-full h-full group bg-slate-100 overflow-hidden touch-pan-y"
+      className="relative w-full h-full group bg-slate-900 overflow-hidden touch-pan-y"
       ref={sliderRef}
     >
       {/* Main Image Container */}
@@ -91,13 +92,13 @@ const ImageGallery: React.FC = () => {
           <div key={index} className="w-full h-full flex-shrink-0 relative select-none">
             <img
               src={url}
-              alt={`Galeria imagem ${index + 1}`}
+              alt={`Hyundai KONA imagem ${index + 1}`}
               className="w-full h-full object-cover pointer-events-none" // pointer-events-none ensures the div captures the events, not the img
               onDragStart={handleDragStart}
               loading={index === 0 ? "eager" : "lazy"}
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
           </div>
         ))}
       </div>
