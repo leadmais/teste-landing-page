@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react';
 
 // Updated images to look like modern cars/SUVs
 const IMAGES = [
-  "/public/1.jpg",
-  "/public/2.jpg",
-  "/public/3.jpg",
-  "/public/4.jpg",
-  "/public/5.jpg"
+  "1.jpg",
+  "2.jpg",
+  "3.jpg",
+  "4.jpg",
+  "5.jpg"
 ];
 
 const ImageGallery: React.FC = () => {
