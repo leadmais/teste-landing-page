@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Input from './Input';
 import { FormData, FormErrors } from '../types';
 import { maskName, maskPhone, validateEmail, validateName, validatePhone } from '../utils/formHelpers';
-import { content } from '../content';
+import { globalConfig } from '../config';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -66,8 +66,6 @@ const ContactForm: React.FC = () => {
       setIsSubmitting(true);
 
       try {
-        // Envio para o Webhook do Zapier
-        // Usamos mode: 'no-cors' para garantir que o request saia do navegador sem erros de CORS
         await fetch('https://hooks.zapier.com/hooks/catch/921122/ufq6nw8/', {
           method: 'POST',
           body: JSON.stringify({
@@ -80,7 +78,6 @@ const ContactForm: React.FC = () => {
           }
         });
 
-        // Redireciona para a página de obrigado
         window.location.href = '/obrigado';
         
       } catch (error) {
@@ -89,7 +86,6 @@ const ContactForm: React.FC = () => {
         setIsSubmitting(false);
       }
     } else {
-      // Mark all fields as touched to show errors
       setTouched({
         name: true,
         email: true,
@@ -105,18 +101,18 @@ const ContactForm: React.FC = () => {
       className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-slate-100"
       noValidate
     >
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">{content.form.title}</h2>
+      <h2 className="text-2xl font-bold text-slate-900 mb-6">{globalConfig.form.title}</h2>
       
       <Input
         id="name"
         name="name"
-        label={content.form.fields.name.label}
+        label={globalConfig.form.fields.name.label}
         type="text"
         value={formData.name}
         onChange={handleChange}
         onBlur={handleBlur}
         error={errors.name}
-        placeholder={content.form.fields.name.placeholder}
+        placeholder={globalConfig.form.fields.name.placeholder}
         autoComplete="name"
         required
         disabled={isSubmitting}
@@ -125,14 +121,14 @@ const ContactForm: React.FC = () => {
       <Input
         id="email"
         name="email"
-        label={content.form.fields.email.label}
+        label={globalConfig.form.fields.email.label}
         type="email"
         inputMode="email"
         value={formData.email}
         onChange={handleChange}
         onBlur={handleBlur}
         error={errors.email}
-        placeholder={content.form.fields.email.placeholder}
+        placeholder={globalConfig.form.fields.email.placeholder}
         autoComplete="email"
         required
         disabled={isSubmitting}
@@ -141,14 +137,14 @@ const ContactForm: React.FC = () => {
       <Input
         id="phone"
         name="phone"
-        label={content.form.fields.phone.label}
+        label={globalConfig.form.fields.phone.label}
         type="tel"
         inputMode="numeric"
         value={formData.phone}
         onChange={handleChange}
         onBlur={handleBlur}
         error={errors.phone}
-        placeholder={content.form.fields.phone.placeholder}
+        placeholder={globalConfig.form.fields.phone.placeholder}
         autoComplete="tel"
         maxLength={15}
         required
@@ -177,7 +173,7 @@ const ContactForm: React.FC = () => {
             </svg>
           </div>
           <span className={`ml-3 text-sm transition-colors ${errors.consent ? 'text-red-600' : 'text-slate-600 group-hover:text-slate-900'}`}>
-            {content.form.fields.consent.label}
+            {globalConfig.form.fields.consent.label}
           </span>
         </label>
         {errors.consent && (
@@ -204,15 +200,15 @@ const ContactForm: React.FC = () => {
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            {content.form.button.loading}
+            {globalConfig.form.button.loading}
           </span>
         ) : (
-          content.form.button.default
+          globalConfig.form.button.default
         )}
       </button>
       
       <p className="mt-4 text-xs text-center text-slate-400">
-        {content.form.footer}
+        {globalConfig.form.footer}
       </p>
     </form>
   );
