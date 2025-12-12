@@ -12,27 +12,32 @@ const HomePage: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Object.values(cars).map((car) => (
-            <div key={car.slug} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-              <div className="aspect-[16/9] w-full relative">
+            <div key={car.slug} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col group">
+              {/* Image Container Link */}
+              <a href={`/${car.slug}`} className="aspect-[16/9] w-full relative block overflow-hidden cursor-pointer">
                 <img 
                   src={car.gallery[0]} 
                   alt={car.name} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute top-2 right-2 bg-brand-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                <div className="absolute top-2 right-2 bg-brand-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-sm z-10">
                   {car.hero.badge}
                 </div>
-              </div>
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+              </a>
               
               <div className="p-6 flex flex-col flex-grow">
-                <h2 className="text-xl font-bold text-slate-900 mb-2">{car.name}</h2>
+                <a href={`/${car.slug}`} className="group-hover:text-brand-600 transition-colors">
+                  <h2 className="text-xl font-bold text-slate-900 mb-2">{car.name}</h2>
+                </a>
                 <p className="text-slate-500 text-sm line-clamp-3 mb-6 flex-grow">
                   {car.hero.description}
                 </p>
                 
                 <a 
                   href={`/${car.slug}`}
-                  className="w-full block text-center bg-slate-900 text-white font-semibold py-3 rounded-lg hover:bg-brand-600 transition-colors"
+                  className="w-full block text-center bg-slate-900 text-white font-semibold py-3 rounded-lg hover:bg-brand-600 transition-colors shadow-sm hover:shadow-md"
                 >
                   Ver Detalhes
                 </a>
