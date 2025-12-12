@@ -2,7 +2,7 @@ import { GlobalConfig, CarConfig } from './types';
 
 export const globalConfig: GlobalConfig = {
   header: {
-    brandName: "Hyundai Terra Sana",
+    brandName: "Hyundai Terra Santa",
     whatsappUrl: "https://wa.me/",
     instagramUrl: "https://instagram.com/"
   },
@@ -26,7 +26,7 @@ export const globalConfig: GlobalConfig = {
     button: "Voltar para o site"
   },
   footer: {
-    copyright: "Hyundai Terra Sana Concessionária. Todos os direitos reservados.",
+    copyright: "Hyundai Terra Santa Concessionária. Todos os direitos reservados.",
     links: {
       terms: "Termos de Uso",
       privacy: "Política de Privacidade"
@@ -53,9 +53,10 @@ export const cars: Record<string, CarConfig> = {
       socialProof: "O carro mais vendido da categoria"
     },
     gallery: [
-      "kona/1.jpg",
-      "kona/1.jpg",
-      "kona/1.jpg"
+      "hb20/1.jpg",
+      "hb20/2.jpg",
+      "hb20/3.jpg",
+      "hb20/4.jpg"
     ]
   },
   'hb20s': {
@@ -75,9 +76,10 @@ export const cars: Record<string, CarConfig> = {
       socialProof: "Porta-malas com abertura inteligente"
     },
     gallery: [
-      "kona/1.jpg",
-      "kona/1.jpg",
-      "kona/1.jpg"
+      "hb20s/1.jpg",
+      "hb20s/2.jpg",
+      "hb20s/3.jpg",
+      "hb20s/4.jpg"
     ]
   },
   'creta': {
@@ -97,9 +99,11 @@ export const cars: Record<string, CarConfig> = {
       socialProof: "5 anos de garantia sem limite de km"
     },
     gallery: [
-      "kona/1.jpg",
-      "kona/1.jpg",
-      "kona/1.jpg"
+      "creta/1.jpg",
+      "creta/2.jpg",
+      "creta/3.jpg",
+      "creta/4.jpg",
+      "creta/5.jpg"
     ]
   },
   'creta-n-line': {
@@ -119,9 +123,10 @@ export const cars: Record<string, CarConfig> = {
       socialProof: "Acabamento exclusivo N Line"
     },
     gallery: [
-      "kona/1.jpg",
-      "kona/1.jpg",
-      "kona/1.jpg"
+      "cretanline/1.jpg",
+      "cretanline/2.jpg",
+      "cretanline/3.jpg",
+      "cretanline/4.jpg"
     ]
   },
   'kona': {
@@ -142,30 +147,10 @@ export const cars: Record<string, CarConfig> = {
     },
     gallery: [
       "kona/1.jpg",
-      "kona/1.jpg",
-      "kona/1.jpg"
-    ]
-  },
-  'kona-ev': {
-    slug: 'kona-ev',
-    name: 'Hyundai KONA Elétrico',
-    seo: {
-      title: "Novo KONA Elétrico | Mobilidade Pura",
-      description: "100% Elétrico. Zero emissões e torque instantâneo. O futuro da mobilidade chegou."
-    },
-    hero: {
-      badge: "🔋 100% Elétrico",
-      title: {
-        prefix: "Novo Hyundai",
-        highlight: "KONA EV"
-      },
-      description: "Autonomia surpreendente e aceleração instantânea. Experimente a liberdade de dirigir um SUV totalmente elétrico.",
-      socialProof: "Autonomia de até 490km"
-    },
-    gallery: [
-      "kona/1.jpg",
-      "kona/1.jpg",
-      "kona/1.jpg"
+      "kona/2.jpg",
+      "kona/3.jpg",
+      "kona/4.jpg",
+      "kona/5.jpg"
     ]
   },
   'tucson': {
@@ -185,9 +170,11 @@ export const cars: Record<string, CarConfig> = {
       socialProof: "Satisfação garantida"
     },
     gallery: [
-      "kona/1.jpg",
-      "kona/1.jpg",
-      "kona/1.jpg"
+      "tucson/1.jpg",
+      "tucson/2.jpg",
+      "tucson/3.jpg",
+      "tucson/4.jpg",
+      "tucson/5.jpg"
     ]
   },
   'ioniq-5': {
@@ -207,9 +194,12 @@ export const cars: Record<string, CarConfig> = {
       socialProof: "Vencedor de múltiplos prêmios globais"
     },
     gallery: [
-      "kona/1.jpg",
-      "kona/1.jpg",
-      "kona/1.jpg"
+      "ioniq/1.jpg",
+      "ioniq/2.jpg",
+      "ioniq/3.jpg",
+      "ioniq/4.jpg",
+      "ioniq/5.jpg",
+      "ioniq/6.jpg"
     ]
   },
   'palisade': {
@@ -229,9 +219,11 @@ export const cars: Record<string, CarConfig> = {
       socialProof: "O topo de linha Hyundai"
     },
     gallery: [
-      "kona/1.jpg",
-      "kona/1.jpg",
-      "kona/1.jpg"
+      "palisade/1.jpg",
+      "palisade/2.jpg",
+      "palisade/3.jpg",
+      "palisade/4.jpg",
+      "palisade/5.jpg"
     ]
   }
 };
