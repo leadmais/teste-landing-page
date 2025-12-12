@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LandingPage from './components/LandingPage';
-import HomePage from './components/HomePage';
 import ThankYou from './components/ThankYou';
+import HomePage from './components/HomePage';
 import { cars } from './config';
 
 const App: React.FC = () => {
@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
   // 3. Home Page (Root)
   if (!slug) {
-    document.title = "Hyundai Auto | Escolha seu Carro";
+    document.title = "Hyundai Terra Santa | Escolha seu Carro";
     return <HomePage />;
   }
 
