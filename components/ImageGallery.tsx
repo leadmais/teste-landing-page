@@ -86,7 +86,13 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
               alt={`Galeria imagem ${index + 1}`}
               className="w-full h-full object-cover pointer-events-none"
               onDragStart={handleDragStart}
+              // Performance Optimizations for LCP
               loading={index === 0 ? "eager" : "lazy"}
+              // @ts-ignore - React 19 supports fetchPriority but types might lag
+              fetchPriority={index === 0 ? "high" : "auto"}
+              decoding={index === 0 ? "sync" : "async"}
+              width="800"
+              height="600"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
           </div>
