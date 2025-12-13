@@ -40,190 +40,96 @@ export const cars: Record<string, CarConfig> = {
     slug: 'omodae5',
     name: 'Omoda E5',
     seo: {
-      title: "Novo HB20 | O Hatch que é Líder",
-      description: "Chegou o Novo HB20. Mais tecnologia, segurança e design arrojado. O hatch preferido do Brasil."
+      title: "Omoda E5 | SUV Elétrico com Design Futurista",
+      description: "Conheça o Omoda E5, o SUV 100% elétrico com visual futurista, alta tecnologia e zero emissões."
     },
     hero: {
-      badge: "🔥 Best-Seller",
+      badge: "⚡ 100% Elétrico",
       title: {
-        prefix: "Novo Hyundai",
-        highlight: "HB20"
+        prefix: "Novo",
+        highlight: "Omoda E5"
       },
-      description: "Ousadia em cada detalhe. O Novo HB20 traz a grade frontal paramétrica e o exclusivo sistema Bluelink de carro conectado.",
-      socialProof: "O carro mais vendido da categoria"
+      description: "Design futurista, performance silenciosa e tecnologia de ponta. O SUV elétrico que redefine a mobilidade.",
+      socialProof: "Tecnologia elétrica de última geração"
     },
     gallery: [
-      "hb20/1.jpg",
-      "hb20/2.jpg",
-      "hb20/3.jpg",
-      "hb20/4.jpg"
+      "omodae5/1.jpg",
+      "omodae5/2.jpg",
+      "omodae5/3.jpg",
+      "omodae5/4.jpg"
     ]
   },
+
   'jaecoo7': {
     slug: 'jaecoo7',
     name: 'Jaecoo 7',
     seo: {
-      title: "Novo HB20S | Elegância e Tecnologia",
-      description: "Conheça o novo sedan da Hyundai. HB20S: Design sofisticado, conforto superior e porta-malas inteligente."
+      title: "Jaecoo 7 | SUV Premium com DNA Off-Road",
+      description: "O Jaecoo 7 combina luxo, robustez e tecnologia para quem busca performance dentro e fora da cidade."
     },
     hero: {
-      badge: "✨ Design Sofisticado",
+      badge: "🌍 Espírito Off-Road",
       title: {
-        prefix: "Novo Hyundai",
-        highlight: "HB20S"
+        prefix: "Novo",
+        highlight: "Jaecoo 7"
       },
-      description: "Um sedan que impressiona. Design fastback, conforto premium e a segurança do pacote Hyundai SmartSense.",
-      socialProof: "Porta-malas com abertura inteligente"
+      description: "Sofisticação urbana com capacidade off-road. Um SUV premium preparado para qualquer terreno.",
+      socialProof: "Conforto premium com tração inteligente"
     },
     gallery: [
-      "hb20s/1.jpg",
-      "hb20s/2.jpg",
-      "hb20s/3.jpg",
-      "hb20s/4.jpg"
+      "jaecoo7/1.jpg",
+      "jaecoo7/2.jpg",
+      "jaecoo7/3.jpg",
+      "jaecoo7/4.jpg"
     ]
   },
+
   'omoda5hev': {
     slug: 'omoda5hev',
     name: 'Omoda 5 HEV',
     seo: {
-      title: "Creta Nova Geração | A Vida Tem Espaço Pra Mais",
-      description: "O SUV que dita tendências. Teto solar panorâmico, motor turbo e muita tecnologia embarcada."
+      title: "Omoda 5 HEV | SUV Híbrido Inteligente",
+      description: "Eficiência, design arrojado e tecnologia híbrida. Omoda 5 HEV: mais economia e performance no dia a dia."
     },
     hero: {
-      badge: "🚙 SUV Líder",
+      badge: "♻️ Tecnologia Híbrida",
       title: {
-        prefix: "Nova Geração",
-        highlight: "Creta"
+        prefix: "Novo",
+        highlight: "Omoda 5 HEV"
       },
-      description: "Comande pelo design. O SUV mais tecnológico da categoria com teto solar panorâmico e comando de voz.",
-      socialProof: "5 anos de garantia sem limite de km"
+      description: "Um SUV híbrido que une eficiência energética, design ousado e conectividade avançada.",
+      socialProof: "Mais autonomia e menor consumo"
     },
     gallery: [
-      "creta/1.jpg",
-      "creta/2.jpg",
-      "creta/3.jpg",
-      "creta/4.jpg",
-      "creta/5.jpg"
+      "omoda5hev/1.jpg",
+      "omoda5hev/2.jpg",
+      "omoda5hev/3.jpg",
+      "omoda5hev/4.jpg",
+      "omoda5hev/5.jpg"
     ]
   },
+
   'omoda7phev': {
     slug: 'omoda7phev',
     name: 'Omoda 7 PHEV',
     seo: {
-      title: "Creta N Line | Esportividade Exclusiva",
-      description: "Design esportivo exclusivo, acabamento premium e performance. Conheça o lado N Line do Creta."
+      title: "Omoda 7 PHEV | SUV Híbrido Plug-in de Alta Performance",
+      description: "Potência, tecnologia e eficiência com recarga elétrica. Omoda 7 PHEV é o futuro dos SUVs híbridos."
     },
     hero: {
-      badge: "🏁 Linha Esportiva",
+      badge: "🔌 Plug-in Hybrid",
       title: {
-        prefix: "Novo Hyundai",
-        highlight: "Creta N Line"
+        prefix: "Novo",
+        highlight: "Omoda 7 PHEV"
       },
-      description: "A união perfeita entre performance, design esportivo exclusivo e a grade frontal dark chrome.",
-      socialProof: "Acabamento exclusivo N Line"
+      description: "Performance elevada com condução elétrica no dia a dia. O SUV híbrido plug-in que entrega o máximo.",
+      socialProof: "Autonomia elétrica + motor a combustão"
     },
     gallery: [
-      "cretanline/1.jpg",
-      "cretanline/2.jpg",
-      "cretanline/3.jpg",
-      "cretanline/4.jpg"
-    ]
-  },
-  'kona': {
-    slug: 'kona',
-    name: 'Hyundai KONA Híbrido',
-    seo: {
-      title: "Novo KONA Híbrido | Eficiência Máxima",
-      description: "O SUV híbrido com design futurista e máxima economia de combustível. Agende seu Test Drive."
-    },
-    hero: {
-      badge: "⚡ Híbrido Inovador",
-      title: {
-        prefix: "Novo Hyundai",
-        highlight: "KONA Híbrido"
-      },
-      description: "O SUV que redefine o futuro. Design futurista, máxima eficiência energética e tecnologia de ponta para você ir mais longe.",
-      socialProof: "Melhor consumo da categoria"
-    },
-    gallery: [
-      "kona/1.jpg",
-      "kona/2.jpg",
-      "kona/3.jpg",
-      "kona/4.jpg",
-      "kona/5.jpg"
-    ]
-  },
-  'tucson': {
-    slug: 'tucson',
-    name: 'New Tucson',
-    seo: {
-      title: "New Tucson | O Clássico Renovado",
-      description: "O SUV mundial da Hyundai. Conforto, potência turbo e acabamento superior."
-    },
-    hero: {
-      badge: "💎 Premium",
-      title: {
-        prefix: "Hyundai",
-        highlight: "New Tucson"
-      },
-      description: "Requinte em todos os detalhes. Teto solar panorâmico, motor Turbo GDI e câmbio de dupla embreagem.",
-      socialProof: "Satisfação garantida"
-    },
-    gallery: [
-      "tucson/1.jpg",
-      "tucson/2.jpg",
-      "tucson/3.jpg",
-      "tucson/4.jpg",
-      "tucson/5.jpg"
-    ]
-  },
-  'ioniq-5': {
-    slug: 'ioniq-5',
-    name: 'Hyundai IONIQ 5',
-    seo: {
-      title: "IONIQ 5 | O Futuro Retrô",
-      description: "Premiado mundialmente. Design paramétrico pixel e carregamento ultra-rápido."
-    },
-    hero: {
-      badge: "🏆 World Car of the Year",
-      title: {
-        prefix: "Hyundai",
-        highlight: "IONIQ 5"
-      },
-      description: "Uma obra de arte sobre rodas. Design revolucionário Parametric Pixel e plataforma modular elétrica global (E-GMP).",
-      socialProof: "Vencedor de múltiplos prêmios globais"
-    },
-    gallery: [
-      "ioniq/1.jpg",
-      "ioniq/2.jpg",
-      "ioniq/3.jpg",
-      "ioniq/4.jpg",
-      "ioniq/5.jpg",
-      "ioniq/6.jpg"
-    ]
-  },
-  'palisade': {
-    slug: 'palisade',
-    name: 'Hyundai Palisade',
-    seo: {
-      title: "Hyundai Palisade | Luxo em Grande Escala",
-      description: "O SUV de luxo de 8 lugares. Máximo conforto, tecnologia e imponência."
-    },
-    hero: {
-      badge: "👑 Flagship SUV",
-      title: {
-        prefix: "All-New",
-        highlight: "Palisade"
-      },
-      description: "Grandiosidade em cada detalhe. Espaço para 8 passageiros com luxo absoluto e tecnologia de última geração.",
-      socialProof: "O topo de linha Hyundai"
-    },
-    gallery: [
-      "palisade/1.jpg",
-      "palisade/2.jpg",
-      "palisade/3.jpg",
-      "palisade/4.jpg",
-      "palisade/5.jpg"
+      "omoda7phev/1.jpg",
+      "omoda7phev/2.jpg",
+      "omoda7phev/3.jpg",
+      "omoda7phev/4.jpg"
     ]
   }
 };
