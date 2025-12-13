@@ -56,7 +56,8 @@ export const cars: Record<string, CarConfig> = {
       "omodae5/1.jpg",
       "omodae5/2.jpg",
       "omodae5/3.jpg",
-      "omodae5/4.jpg"
+      "omodae5/4.jpg",
+      "omodae5/5.jpg"
     ]
   },
 
@@ -80,7 +81,8 @@ export const cars: Record<string, CarConfig> = {
       "jaecoo7/1.jpg",
       "jaecoo7/2.jpg",
       "jaecoo7/3.jpg",
-      "jaecoo7/4.jpg"
+      "jaecoo7/4.jpg",
+      "jaecoo7/5.jpg"
     ]
   },
 
@@ -129,7 +131,8 @@ export const cars: Record<string, CarConfig> = {
       "omoda7phev/1.jpg",
       "omoda7phev/2.jpg",
       "omoda7phev/3.jpg",
-      "omoda7phev/4.jpg"
+      "omoda7phev/4.jpg",
+      "omoda7phev/5.jpg"
     ]
   }
 };
