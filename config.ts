@@ -1,8 +1,8 @@
-import { GlobalConfig, CarConfig } from './types';
+import { CarConfig, GlobalConfig } from './types';
 
 export const globalConfig: GlobalConfig = {
   header: {
-    brandName: "Hyundai Terra Santa",
+    brandName: "Omoda",
     whatsappUrl: "https://wa.me/",
     instagramUrl: "https://instagram.com/"
   },
