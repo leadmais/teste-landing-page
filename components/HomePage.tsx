@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
                   alt={car.name} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute top-2 right-2 bg-brand-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-sm z-10">
+                <div className="absolute top-2 right-2 bg-brand-900 text-white text-xs font-bold px-2 py-1 rounded-full shadow-sm z-10">
                   {car.hero.badge}
                 </div>
                 {/* Overlay on hover */}
@@ -28,7 +28,7 @@ const HomePage: React.FC = () => {
               </a>
               
               <div className="p-6 flex flex-col flex-grow">
-                <a href={`/${car.slug}`} className="group-hover:text-brand-600 transition-colors">
+                <a href={`/${car.slug}`} className="group-hover:text-brand-900 transition-colors">
                   <h2 className="text-xl font-bold text-slate-900 mb-2">{car.name}</h2>
                 </a>
                 <p className="text-slate-500 text-sm line-clamp-3 mb-6 flex-grow">
@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
                 
                 <a 
                   href={`/${car.slug}`}
-                  className="w-full block text-center bg-slate-900 text-white font-semibold py-3 rounded-lg hover:bg-brand-600 transition-colors shadow-sm hover:shadow-md"
+                  className="w-full block text-center bg-black text-white font-semibold py-3 rounded-lg hover:bg-brand-600 transition-colors shadow-sm hover:shadow-md"
                 >
                   Ver Detalhes
                 </a>

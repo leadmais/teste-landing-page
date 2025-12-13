@@ -2,7 +2,7 @@ import { CarConfig, GlobalConfig } from './types';
 
 export const globalConfig: GlobalConfig = {
   header: {
-    brandName: "Omoda",
+    brandName: "Omoda e Jaecoo",
     whatsappUrl: "https://wa.me/",
     instagramUrl: "https://instagram.com/"
   },

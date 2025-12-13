@@ -162,7 +162,7 @@ const ContactForm: React.FC = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               disabled={isSubmitting}
-              className={`peer h-5 w-5 cursor-pointer appearance-none rounded border shadow-sm transition-all focus:ring-2 focus:ring-brand-500 focus:ring-offset-1 ${errors.consent ? 'border-red-500' : 'border-slate-300 checked:border-brand-600 checked:bg-brand-600'}`}
+              className={`peer h-5 w-5 cursor-pointer appearance-none rounded border shadow-sm transition-all focus:ring-2 focus:ring-red-500 focus:ring-offset-1 ${errors.consent ? 'border-red-500' : 'border-slate-300 checked:border-red-600 checked:bg-red-600'}`}
             />
             <svg
               className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 text-white w-3.5 h-3.5"
@@ -188,10 +188,10 @@ const ContactForm: React.FC = () => {
         disabled={isSubmitting}
         className={`
           w-full py-4 px-6 rounded-lg font-bold text-lg shadow-sm transition-all duration-200 
-          focus:outline-none focus:ring-4 focus:ring-brand-500/50 
+          focus:outline-none focus:ring-4 focus:ring-red-500/50 
           ${isSubmitting 
-            ? 'bg-brand-400 cursor-not-allowed opacity-80' 
-            : 'bg-brand-600 text-white hover:bg-brand-700 hover:shadow-md transform hover:-translate-y-0.5'}
+            ? 'bg-red-400 cursor-not-allowed opacity-80' 
+            : 'bg-red-600 text-white hover:bg-red-700 hover:shadow-md transform hover:-translate-y-0.5'}
         `}
       >
         {isSubmitting ? (
