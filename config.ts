@@ -36,9 +36,9 @@ export const globalConfig: GlobalConfig = {
 
 // Registry of cars. The key is the URL slug.
 export const cars: Record<string, CarConfig> = {
-  'hb20': {
-    slug: 'hb20',
-    name: 'Novo Hyundai HB20',
+  'omodae5': {
+    slug: 'omodae5',
+    name: 'Omoda E5',
     seo: {
       title: "Novo HB20 | O Hatch que é Líder",
       description: "Chegou o Novo HB20. Mais tecnologia, segurança e design arrojado. O hatch preferido do Brasil."
@@ -59,9 +59,9 @@ export const cars: Record<string, CarConfig> = {
       "hb20/4.jpg"
     ]
   },
-  'hb20s': {
-    slug: 'hb20s',
-    name: 'Novo Hyundai HB20S',
+  'jaecoo7': {
+    slug: 'jaecoo7',
+    name: 'Jaecoo 7',
     seo: {
       title: "Novo HB20S | Elegância e Tecnologia",
       description: "Conheça o novo sedan da Hyundai. HB20S: Design sofisticado, conforto superior e porta-malas inteligente."
@@ -82,9 +82,9 @@ export const cars: Record<string, CarConfig> = {
       "hb20s/4.jpg"
     ]
   },
-  'creta': {
-    slug: 'creta',
-    name: 'Hyundai Creta Nova Geração',
+  'omoda5hev': {
+    slug: 'omoda5hev',
+    name: 'Omoda 5 HEV',
     seo: {
       title: "Creta Nova Geração | A Vida Tem Espaço Pra Mais",
       description: "O SUV que dita tendências. Teto solar panorâmico, motor turbo e muita tecnologia embarcada."
@@ -106,9 +106,9 @@ export const cars: Record<string, CarConfig> = {
       "creta/5.jpg"
     ]
   },
-  'creta-n-line': {
-    slug: 'creta-n-line',
-    name: 'Hyundai Creta N Line',
+  'omoda7phev': {
+    slug: 'omoda7phev',
+    name: 'Omoda 7 PHEV',
     seo: {
       title: "Creta N Line | Esportividade Exclusiva",
       description: "Design esportivo exclusivo, acabamento premium e performance. Conheça o lado N Line do Creta."
