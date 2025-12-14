@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
   // 3. Home Page (Root)
   if (!slug) {
-    document.title = "Hyundai Terra Santa | Escolha seu Carro";
+    document.title = "Omoda e Jaecoo ADTSA";
     return <HomePage />;
   }
 

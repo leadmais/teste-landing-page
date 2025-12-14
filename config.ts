@@ -26,7 +26,7 @@ export const globalConfig: GlobalConfig = {
     button: "Voltar para o site"
   },
   footer: {
-    copyright: "Hyundai Terra Santa Concessionária. Todos os direitos reservados.",
+    copyright: "Omoda e Jaecoo ADTSA Concessionária. Todos os direitos reservados.",
     links: {
       terms: "Termos de Uso",
       privacy: "Política de Privacidade"
