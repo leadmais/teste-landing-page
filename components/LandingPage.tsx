@@ -29,10 +29,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ car }) => {
       <header className="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.location.href = '/'}>
-            {/* <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-              H
-            </div> */}
-            <span className="font-bold text-lg tracking-tight text-slate-800">{globalConfig.header.brandName}</span>
+            {globalConfig.header.logoUrl2 ? (
+              <img 
+                src={globalConfig.header.logoUrl2} 
+                alt={globalConfig.header.brandName}
+                className="h-8 w-auto object-contain" 
+              />
+            ) : (
+              <span className="font-bold text-lg tracking-tight text-slate-800">{globalConfig.header.brandName}</span>
+            )}
           </div>
 
           <div className="flex items-center gap-4">

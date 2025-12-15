@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { cars, globalConfig } from '../config';
 
 const HomePage: React.FC = () => {
+
+  // SEO Management for Home Page
+  useEffect(() => {
+    document.title = `${globalConfig.header.brandName} | Escolha seu Carro`;
+    
+    // Update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "Conheça a linha completa Omoda e Jaecoo. Design futurista, tecnologia de ponta e máxima eficiência. Agende seu Test Drive hoje mesmo.");
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
       <header className="bg-brand-900 py-12 px-4 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{globalConfig.header.brandName}</h1>
-        <p className="text-brand-100">Escolha o seu próximo carro</p>
+        {globalConfig.header.logoUrl && (
+          <div className="mb-4p-3 rounded-xl shadow-lg inline-block">
+             <img 
+              src={globalConfig.header.logoUrl} 
+              alt={globalConfig.header.brandName} 
+              className="h-10 w-auto object-contain"
+            />
+          </div>
+        )}
+        {/* <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{globalConfig.header.brandName}</h1> */}
+        {/* <p className="text-brand-100">Escolha o seu próximo carro</p> */}
       </header>
 
       <main className="max-w-7xl mx-auto px-4 py-12">

@@ -3,6 +3,8 @@ import { CarConfig, GlobalConfig } from './types';
 export const globalConfig: GlobalConfig = {
   header: {
     brandName: "Omoda e Jaecoo",
+    logoUrl: "logo-white.png",
+    logoUrl2: "logo-black.png",
     whatsappUrl: "https://wa.me/",
     instagramUrl: "https://instagram.com/"
   },

@@ -23,6 +23,8 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 export interface GlobalConfig {
   header: {
     brandName: string;
+    logoUrl?: string;
+    logoUrl2?: string;
     whatsappUrl: string;
     instagramUrl: string;
   };
