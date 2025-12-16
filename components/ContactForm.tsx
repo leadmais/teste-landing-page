@@ -207,7 +207,7 @@ const ContactForm: React.FC = () => {
         )}
       </button>
       
-      <p className="mt-4 text-xs text-center text-slate-400">
+      <p className="mt-4 text-xs text-center text-slate-600">
         {globalConfig.form.footer}
       </p>
     </form>
