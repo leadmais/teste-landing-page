@@ -136,10 +136,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ car }) => {
           <p className="text-slate-500 text-sm">
             &copy; {new Date().getFullYear()} {globalConfig.footer.copyright}
           </p>
-          <div className="mt-2 flex justify-center gap-4 text-xs text-slate-400">
-            <a href="#" className="hover:text-brand-600 transition-colors">{globalConfig.footer.links.terms}</a>
+          <div className="mt-2 flex justify-center gap-4 text-xs text-slate-600">
+            <a href="#" className="hover:text-brand-600 transition-colors underline">{globalConfig.footer.links.terms}</a>
             <span>•</span>
-            <a href="#" className="hover:text-brand-600 transition-colors">{globalConfig.footer.links.privacy}</a>
+            <a href="#" className="hover:text-brand-600 transition-colors underline">{globalConfig.footer.links.privacy}</a>
           </div>
         </div>
       </footer>
