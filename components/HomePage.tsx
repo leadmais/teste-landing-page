@@ -3,73 +3,72 @@ import { cars, globalConfig } from '../config';
 
 const HomePage: React.FC = () => {
   
-  // SEO & Open Graph Management for Home Page
   useEffect(() => {
     const title = `${globalConfig.header.brandName} | Escolha seu Carro`;
-    const description = globalConfig.header.description;
+    const description = "Conheça a linha completa Omoda e Jaecoo. Design futurista, tecnologia de ponta e máxima eficiência. Agende seu Test Drive hoje mesmo.";
     const image = globalConfig.header.imgCapa;
     const url = window.location.href;
 
     document.title = title;
     
-    // Standard meta description
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute('content', description);
-
-    // Helper to update OG tags
-    const updateOg = (property: string, content: string) => {
-      let element = document.querySelector(`meta[property="${property}"]`);
+    const setMeta = (attrName: string, attrValue: string, content: string) => {
+      let element = document.querySelector(`meta[${attrName}="${attrValue}"]`);
       if (!element) {
         element = document.createElement('meta');
-        element.setAttribute('property', property);
+        element.setAttribute(attrName, attrValue);
         document.head.appendChild(element);
       }
       element.setAttribute('content', content);
     };
 
-    updateOg('og:title', title);
-    updateOg('og:description', description);
-    updateOg('og:image', image);
-    updateOg('og:url', url);
-    updateOg('og:site_name', globalConfig.header.brandName);
+    setMeta('name', 'description', description);
+    setMeta('name', 'title', title);
+    setMeta('property', 'og:title', title);
+    setMeta('property', 'og:description', description);
+    setMeta('property', 'og:image', image);
+    setMeta('property', 'og:url', url);
+    setMeta('property', 'twitter:title', title);
+    setMeta('property', 'twitter:description', description);
+    setMeta('property', 'twitter:image', image);
   }, []);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
-      <header className="bg-brand-900 py-12 px-4 text-center">
+      <header className="bg-brand-900 py-12 px-4 text-center flex flex-col items-center">
         {globalConfig.header.logoUrl && (
-          <div className="mb-4p-3 rounded-xl shadow-lg inline-block">
+          <div className="mb-4 p-3 rounded-xl shadow-lg inline-block">
              <img 
               src={globalConfig.header.logoUrl} 
               alt={globalConfig.header.brandName} 
-              className="h-10 w-auto object-contain"
+              className="h-12 w-auto object-contain"
             />
           </div>
         )}
-        {/* <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{globalConfig.header.brandName}</h1> */}
-        {/* <p className="text-brand-100">Escolha o seu próximo carro</p> */}
+        {/* <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{globalConfig.header.brandName}</h1>
+        <p className="text-brand-100">Escolha o seu próximo carro</p> */}
       </header>
 
       <main className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Object.values(cars).map((car) => (
             <div key={car.slug} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col group">
-              {/* Image Container Link */}
               <a href={`/${car.slug}`} className="aspect-[16/9] w-full relative block overflow-hidden cursor-pointer">
                 <img 
                   src={car.gallery[0]} 
                   alt={car.name} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  width="400"
+                  height="225"
                 />
-                <div className="absolute top-2 right-2 bg-brand-900 text-white text-xs font-bold px-2 py-1 rounded-full shadow-sm z-10">
+                <div className="absolute top-2 right-2 bg-brand-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-sm z-10">
                   {car.hero.badge}
                 </div>
-                {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
               </a>
               
               <div className="p-6 flex flex-col flex-grow">
-                <a href={`/${car.slug}`} className="group-hover:text-brand-900 transition-colors">
+                <a href={`/${car.slug}`} className="group-hover:text-brand-600 transition-colors">
                   <h2 className="text-xl font-bold text-slate-900 mb-2">{car.name}</h2>
                 </a>
                 <p className="text-slate-500 text-sm line-clamp-3 mb-6 flex-grow">
@@ -78,7 +77,7 @@ const HomePage: React.FC = () => {
                 
                 <a 
                   href={`/${car.slug}`}
-                  className="w-full block text-center bg-black text-white font-semibold py-3 rounded-lg hover:bg-brand-600 transition-colors shadow-sm hover:shadow-md"
+                  className="w-full block text-center bg-slate-900 text-white font-semibold py-3 rounded-lg hover:bg-brand-600 transition-colors shadow-sm hover:shadow-md"
                 >
                   Ver Detalhes
                 </a>

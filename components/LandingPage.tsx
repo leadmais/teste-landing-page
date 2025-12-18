@@ -9,13 +9,16 @@ interface LandingPageProps {
 }
 
 const LandingPage: React.FC<LandingPageProps> = ({ car }) => {
-  // Generate a random number between 10 and 100 once on mount for offers
   const [offersCount] = useState(() => Math.floor(Math.random() * (100 - 10 + 1)) + 10);
-  // Generate a random number between 5 and 30 once on mount for minutes
   const [minutesCount] = useState(() => Math.floor(Math.random() * (30 - 5 + 1)) + 5);
   
+  const [avatars] = useState(() => [
+    { gender: Math.random() > 0.5 ? 'men' : 'women', id: Math.floor(Math.random() * 99) + 1 },
+    { gender: Math.random() > 0.5 ? 'men' : 'women', id: Math.floor(Math.random() * 99) + 1 },
+    { gender: Math.random() > 0.5 ? 'men' : 'women', id: Math.floor(Math.random() * 99) + 1 },
+  ]);
+  
   useEffect(() => {
-    // SEO & Open Graph update
     const title = car.seo.title;
     const description = car.seo.description;
     const image = car.gallery[0];
@@ -23,38 +26,46 @@ const LandingPage: React.FC<LandingPageProps> = ({ car }) => {
 
     document.title = title;
     
-    // Update standard description
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute('content', description);
-
-    // Helper to update OG tags
-    const updateOg = (property: string, content: string) => {
-      let element = document.querySelector(`meta[property="${property}"]`);
+    // Helper to update or create tags
+    const setMeta = (attrName: string, attrValue: string, content: string) => {
+      let element = document.querySelector(`meta[${attrName}="${attrValue}"]`);
       if (!element) {
         element = document.createElement('meta');
-        element.setAttribute('property', property);
+        element.setAttribute(attrName, attrValue);
         document.head.appendChild(element);
       }
       element.setAttribute('content', content);
     };
 
-    updateOg('og:title', title);
-    updateOg('og:description', description);
-    updateOg('og:image', image);
-    updateOg('og:url', url);
-    updateOg('og:site_name', globalConfig.header.brandName);
+    // Standard
+    setMeta('name', 'description', description);
+    setMeta('name', 'title', title);
+
+    // Open Graph
+    setMeta('property', 'og:title', title);
+    setMeta('property', 'og:description', description);
+    setMeta('property', 'og:image', image);
+    setMeta('property', 'og:url', url);
+    setMeta('property', 'og:image:width', '1200');
+    setMeta('property', 'og:image:height', '630');
+
+    // Twitter
+    setMeta('property', 'twitter:title', title);
+    setMeta('property', 'twitter:description', description);
+    setMeta('property', 'twitter:image', image);
+    setMeta('property', 'twitter:url', url);
+    
   }, [car]);
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-brand-100 selection:text-brand-900 flex flex-col">
-      {/* Header */}
       <header className="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.location.href = '/'}>
-            {globalConfig.header.logoUrl2 ? (
+            {globalConfig.header.logoUrl ? (
               <img 
                 src={globalConfig.header.logoUrl2} 
-                alt={globalConfig.header.brandName}
+                alt={globalConfig.header.brandName} 
                 className="h-8 w-auto object-contain" 
               />
             ) : (
@@ -62,7 +73,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ car }) => {
             )}
           </div>
 
-          {/* <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4">
             <a 
               href={globalConfig.header.whatsappUrl} 
               target="_blank" 
@@ -81,7 +92,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ car }) => {
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-          </div> */}
+          </div>
         </div>
       </header>
 
@@ -103,33 +114,18 @@ const LandingPage: React.FC<LandingPageProps> = ({ car }) => {
               <div className="pt-4 hidden lg:block">
                 <div className="flex items-center gap-4 text-sm text-slate-500">
                   <div className="flex -space-x-2">
-                    <img 
-                      className="w-8 h-8 rounded-full border-2 border-white" 
-                      src="https://picsum.photos/32/32?random=1" 
-                      alt="" 
-                      loading="lazy"
-                      decoding="async"
-                      width="32"
-                      height="32"
-                    />
-                    <img 
-                      className="w-8 h-8 rounded-full border-2 border-white" 
-                      src="https://picsum.photos/32/32?random=2" 
-                      alt="" 
-                      loading="lazy" 
-                      decoding="async"
-                      width="32"
-                      height="32"
-                    />
-                    <img 
-                      className="w-8 h-8 rounded-full border-2 border-white" 
-                      src="https://picsum.photos/32/32?random=3" 
-                      alt="" 
-                      loading="lazy" 
-                      decoding="async"
-                      width="32"
-                      height="32"
-                    />
+                    {avatars.map((avatar, idx) => (
+                      <img 
+                        key={idx}
+                        className="w-8 h-8 rounded-full border-2 border-white bg-slate-200" 
+                        src={`https://randomuser.me/api/portraits/${avatar.gender}/${avatar.id}.jpg`} 
+                        alt="Foto de cliente" 
+                        loading="lazy"
+                        decoding="async"
+                        width="32"
+                        height="32"
+                      />
+                    ))}
                   </div>
                   <p className="font-medium text-slate-600">
                     <span className="font-bold text-brand-600">{offersCount}</span> ofertas enviadas nos últimos {minutesCount} minutos
@@ -140,7 +136,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ car }) => {
 
             <div className="order-2 lg:order-2 flex flex-col gap-8">
               <div className="aspect-[16/9] lg:aspect-[4/3] rounded-2xl shadow-2xl overflow-hidden bg-slate-100">
-                {/* Pass the specific car images */}
                 <ImageGallery images={car.gallery} />
               </div>
 
@@ -158,10 +153,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ car }) => {
           <p className="text-slate-500 text-sm">
             &copy; {new Date().getFullYear()} {globalConfig.footer.copyright}
           </p>
-          <div className="mt-2 flex justify-center gap-4 text-xs text-slate-600">
-            <a href="#" className="hover:text-brand-600 transition-colors underline">{globalConfig.footer.links.terms}</a>
+          <div className="mt-2 flex justify-center gap-4 text-xs text-slate-400">
+            <a href="#" className="hover:text-brand-600 transition-colors">{globalConfig.footer.links.terms}</a>
             <span>•</span>
-            <a href="#" className="hover:text-brand-600 transition-colors underline">{globalConfig.footer.links.privacy}</a>
+            <a href="#" className="hover:text-brand-600 transition-colors">{globalConfig.footer.links.privacy}</a>
           </div>
         </div>
       </footer>
