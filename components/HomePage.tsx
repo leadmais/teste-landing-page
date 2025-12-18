@@ -2,16 +2,36 @@ import React, { useEffect } from 'react';
 import { cars, globalConfig } from '../config';
 
 const HomePage: React.FC = () => {
-
-  // SEO Management for Home Page
+  
+  // SEO & Open Graph Management for Home Page
   useEffect(() => {
-    document.title = `${globalConfig.header.brandName} | Escolha seu Carro`;
+    const title = `${globalConfig.header.brandName} | Escolha seu Carro`;
+    const description = globalConfig.header.description;
+    const image = globalConfig.header.imgCapa;
+    const url = window.location.href;
+
+    document.title = title;
     
-    // Update meta description
+    // Standard meta description
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', "Conheça a linha completa Omoda e Jaecoo. Design futurista, tecnologia de ponta e máxima eficiência. Agende seu Test Drive hoje mesmo.");
-    }
+    if (metaDesc) metaDesc.setAttribute('content', description);
+
+    // Helper to update OG tags
+    const updateOg = (property: string, content: string) => {
+      let element = document.querySelector(`meta[property="${property}"]`);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute('property', property);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', content);
+    };
+
+    updateOg('og:title', title);
+    updateOg('og:description', description);
+    updateOg('og:image', image);
+    updateOg('og:url', url);
+    updateOg('og:site_name', globalConfig.header.brandName);
   }, []);
 
   return (

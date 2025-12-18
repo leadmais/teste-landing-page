@@ -15,12 +15,34 @@ const LandingPage: React.FC<LandingPageProps> = ({ car }) => {
   const [minutesCount] = useState(() => Math.floor(Math.random() * (30 - 5 + 1)) + 5);
   
   useEffect(() => {
-    // Dynamic SEO update based on car data
-    document.title = car.seo.title;
+    // SEO & Open Graph update
+    const title = car.seo.title;
+    const description = car.seo.description;
+    const image = car.gallery[0];
+    const url = window.location.href;
+
+    document.title = title;
+    
+    // Update standard description
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', car.seo.description);
-    }
+    if (metaDesc) metaDesc.setAttribute('content', description);
+
+    // Helper to update OG tags
+    const updateOg = (property: string, content: string) => {
+      let element = document.querySelector(`meta[property="${property}"]`);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute('property', property);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', content);
+    };
+
+    updateOg('og:title', title);
+    updateOg('og:description', description);
+    updateOg('og:image', image);
+    updateOg('og:url', url);
+    updateOg('og:site_name', globalConfig.header.brandName);
   }, [car]);
 
   return (

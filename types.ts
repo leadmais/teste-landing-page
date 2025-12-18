@@ -25,6 +25,8 @@ export interface GlobalConfig {
     brandName: string;
     logoUrl?: string;
     logoUrl2?: string;
+    description: string;
+    imgCapa: string;
     whatsappUrl: string;
     instagramUrl: string;
   };

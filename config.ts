@@ -5,6 +5,8 @@ export const globalConfig: GlobalConfig = {
     brandName: "Omoda e Jaecoo",
     logoUrl: "logo-white.png",
     logoUrl2: "logo-black.png",
+    imgCapa: "https://omodajaecooadtsa.leadmais.com.br/omodae5/1.jpg",
+    description: "Conheça a linha completa Omoda e Jaecoo. Design futurista, tecnologia de ponta e máxima eficiência.",
     whatsappUrl: "https://wa.me/",
     instagramUrl: "https://instagram.com/"
   },
